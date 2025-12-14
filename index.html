@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tactical Battle</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .btn {
+      display: block;
+      width: 220px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 1.2rem;
+      background: #2e2e2e;
+      color: white;
+      border: 2px solid #555;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #444;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tactical Battle</h1>
+
+    <button class="btn">Play</button>
+    <button class="btn">Tutorial</button>
+    <button class="btn">Settings</button>
+  </div>
+</body>
+</html>
