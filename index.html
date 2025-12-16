@@ -65,31 +65,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>Light/Dark Mode Toggle</body>
+<title>Light/Dark Mode Toggle</title>
 <style>
-  body {
+  body.light {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     background-color: #f0f0f0; /* light mode background */
     color: #111; /* light mode text */
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3, color 0.3;
   }
 
   body.dark {
-    background-color: #111; /* dark mode background */
-    color: #f0f0f0; /* dark mode text */
+    background-color: #f0f0f0; /* dark mode background */
+    color: #000000; /* dark mode text */
   }
 
   .toggle-btn {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 20;
+    right: 20;
     background-color: transparent;
     border: none;
-    font-size: 2rem;
+    font-size: 2 ;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2;
   }
 
   .toggle-btn:active {
