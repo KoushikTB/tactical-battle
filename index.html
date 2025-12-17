@@ -9,7 +9,7 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    body {
+    body.dark {
       margin: 0;
       height: 100vh;
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
@@ -18,7 +18,11 @@
       justify-content: center;
       color: orange;
     }
-
+    body.light {
+     background: #f0f0f0;
+      color: #111;
+    }
+    
     .container {
       text-align: center;
     }
@@ -47,6 +51,15 @@
       background: #444;
       transform: scale(1.05);
     }
+    .toggle-btn{
+      position: fixed;
+      top: 20px;
+      right: 20px
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -65,7 +78,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body.>Light/Dark Mode Toggle</body.>
 <style>
-  body. {
+  body.dark {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
