@@ -1,139 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css">
-  <meta charset="UTF-8" />
-  <title>Tactical Battle</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body.dark {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: orange;
-    }
-    body.light {
-     background: #f0f0f0;
-      color: #111;
-    }
-    
-    .container {
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 40px;
-      letter-spacing: 2px;
-    }
-
-    .btn {
-      display: block;
-      width: 220px;
-      margin: 15px auto;
-      padding: 15px;
-      font-size: 1.2rem;
-      background: #2e2e2e;
-      color: white;
-      border: 2px solid #555;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    body.light .btn {
-      background: #ddd
-        color: #111
-        border-color: #aaa  ;
-    }
-    
-    .btn:hover {
-      background: #444;
-      transform: scale(1.05);
-    }
-    .toggle-btn{
-      position: fixed;
-      top: 20px;
-      right: 20px
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-  
-<body>
-  <div class="container">
-    <h1>Tactical Battle</h1>
-
-    <button class="btn">Play</button>
-    <button class="btn">Tutorial</button>
-    <button class="btn">Settings</button>
-  </div>
-</body>
-</html>
-
-<head>
 <meta charset="UTF-8">
+<title>Tactical Battle</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body.>Light/Dark Mode Toggle</body.>
+
 <style>
-  body.dark {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: #f0f0f0; /* light mode background */
-    color: #000000; /* light mode text */
-    transition: background-color 0.3, color 0.3;
-  }
+:root {
+  --dark-bg: #0f0f0f;
+  --light-bg: #f4f1e8;
+  --dark-text: #f5f5f5;
+  --light-text: #111;
+  --accent: orange;
+}
 
-  body.light {
-    background-color: #000000; /* dark mode background */
-    color: #ffffff; /* dark mode text */
-  }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  transition: background 0.3s, color 0.3s;
+}
 
-  .toggle-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: transparent;
-    border: none;
-    font-size: 2rem ;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
+body.light {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
 
-  .toggle-btn:active {
-    transform: scale(0.9);
-  }
+.section {
+  display: none;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+}
+
+.section.active {
+  display: block;
+}
+
+.btn {
+  width: 240px;
+  padding: 15px;
+  margin: 15px auto;
+  display: block;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 2px solid #555;
+  background: #2e2e2e;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+body.light .btn {
+  background: white;
+  color: black;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
+.logo .top,
+.logo .bottom {
+  background: transparent;
+  color: orange;
+  border: 3px solid red;
+  padding: 10px 30px;
+  font-weight: bold;
+}
+
+.logo .top { font-size: 2.4rem; }
+.logo .bottom { font-size: 1.6rem; margin-top: 10px; }
+
+.toggle-theme {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ach-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #c2a36b;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ach-panel {
+  position: fixed;
+  inset: 5% 10%;
+  background: #e7d8b1;
+  border: 5px solid #a07c3a;
+  padding: 30px;
+  overflow-y: auto;
+  display: none;
+}
+
+.ach-panel.active { display: block; }
+
+.tutorial-box {
+  max-width: 750px;
+  margin: auto;
+}
+
+.tutorial-nav {
+  margin-top: 30px;
+}
+
+.card {
+  margin: 8px auto;
+  padding: 8px;
+  border-radius: 8px;
+  width: 80%;
+  font-weight: bold;
+}
+
+.rare { border: 2px solid #4da6ff; }
+.epic { border: 2px solid magenta; }
+.legendary { border: 2px solid gold; }
+.mystical { border: 2px solid #b38bff; }
+.upgraded { border: 2px solid gold; box-shadow: 0 0 10px #66ccff; }
+.secret { border: 2px solid darkred; box-shadow: 0 0 12px black; }
 </style>
 </head>
+
 <body>
 
-<button class="toggle-btn" id="modeToggle">🌙</button>
+<button class="toggle-theme" id="themeBtn">🌙</button>
+
+<div class="ach-btn" onclick="toggleAchievements()">Achievements</div>
+<div class="ach-panel" id="achPanel">
+  <h2>Achievements</h2>
+  <p>Coming soon...</p>
+  <button class="btn" onclick="toggleAchievements()">Close</button>
+</div>
+
+<div class="section active" id="menu">
+  <div class="logo">
+    <div class="top">TACTICAL</div>
+    <div class="bottom">BATTLE</div>
+  </div>
+  <button class="btn" onclick="showSection('play')">Play</button>
+  <button class="btn" onclick="showSection('tutorial')">Tutorial</button>
+  <button class="btn" onclick="showSection('settings')">Settings</button>
+</div>
+
+<div class="section" id="play">
+  <h1>Choose Mode</h1>
+  <button class="btn" onclick="showSection('ai')">AI</button>
+  <button class="btn back" onclick="showSection('menu')">Back</button>
+</div>
+
+<div class="section" id="ai">
+  <h1>You vs AI</h1>
+  <p>Battle system coming soon.</p>
+  <button class="btn back" onclick="showSection('play')">Back</button>
+</div>
+
+<div class="section" id="tutorial">
+  <div class="tutorial-box">
+    <h1 id="tutorialTitle"></h1>
+    <div id="tutorialText"></div>
+
+    <div class="tutorial-nav">
+      <button class="btn" onclick="prevTutorial()">Back</button>
+      <button class="btn" onclick="nextTutorial()">Next</button>
+    </div>
+
+    <button class="btn back" onclick="showSection('menu')">Exit Tutorial</button>
+  </div>
+</div>
+
+<div class="section" id="settings">
+  <h1>Settings</h1>
+  <p>More options soon.</p>
+  <button class="btn back" onclick="showSection('menu')">Back</button>
+</div>
 
 <script>
-  const toggleBtn = document.getElementById('modeToggle');
-  const body = document.body;
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-  toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark');
+themeBtn.onclick = () => {
+  document.body.classList.toggle('light');
+  themeBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
+};
 
-    // change icon
-    if (body.classList.contains('')) {
-      toggleBtn.textContent = '🌞';
-    } else {
-      toggleBtn.textContent = '🌙';
-    }
-  });
+function toggleAchievements() {
+  achPanel.classList.toggle('active');
+}
+
+const tutorialPages = [
+  { title:"Welcome", text:"Tactical Battle is a chaotic strategy card game focused on weapons, upgrades, and smart risk-taking." },
+  { title:"Game Flow", text:"Each turn you draw a card or play one. Upgrade weapons, sabotage enemies, and build insane combos." },
+  { title:"Weapon Rarities", text:"<div class='card rare'>Rare – Blue</div><div class='card epic'>Epic – Magenta</div><div class='card legendary'>Legendary – Gold</div><div class='card mystical'>Mystical – Light Purple / Blue</div><div class='card upgraded'>Upgraded‑Legendary – Crystallized Gold</div>" },
+  { title:"Rare Weapons", text:"<div class='card rare'>Bow</div><div class='card rare'>Bomb</div><div class='card rare'>Spear</div>" },
+  { title:"Epic Weapons", text:"<div class='card epic'>Crossbow</div><div class='card epic'>Minigun</div><div class='card epic'>Nature’s Staff</div><div class='card epic'>Trident</div>" },
+  { title:"Legendary Weapons", text:"<div class='card legendary'>Laser</div><div class='card legendary'>Kunai</div>" },
+  { title:"Mystical Weapon", text:"<div class='card mystical'>Magic Wand</div>" },
+  { title:"Upgraded‑Legendary Weapons", text:"<div class='card upgraded'>Silent Assassin</div><div class='card upgraded'>Plasma Cannon</div>" },
+  { title:"Limited‑Time Weapons", text:"Military, Hacker, and Christmas weapons appear only during special events." },
+  { title:"Secret ??? Rarity", text:"<div class='card secret'>??? (1‑of‑1)</div><p>A unique, single‑copy weapon with red and black cracked energy. Extremely rare.</p>" },
+  { title:"Crystals", text:"Crystal of Annihilation • Life • Torn Reality • Chaotic Curses • Mighty Storm" },
+  { title:"Final Tips", text:"Experiment. Sacrifice. Break the rules. Tactical Battle rewards creativity." }
+];
+
+let tutorialIndex = 0;
+function updateTutorial() {
+  tutorialTitle.textContent = tutorialPages[tutorialIndex].title;
+  tutorialText.innerHTML = tutorialPages[tutorialIndex].text;
+}
+function nextTutorial() {
+  if (tutorialIndex < tutorialPages.length - 1) tutorialIndex++;
+  updateTutorial();
+}
+function prevTutorial() {
+  if (tutorialIndex > 0) tutorialIndex--;
+  updateTutorial();
+}
+updateTutorial();
 </script>
 
 </body>
