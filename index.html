@@ -107,6 +107,66 @@ body.light .btn {
   overflow-y: auto;
   display: none;
 }
+/* =====================
+   ACHIEVEMENT ITEMS
+===================== */
+
+.achievement {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 165, 0, 0.4);
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.achievement h3 {
+  margin: 0 0 6px;
+}
+
+.achievement p {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Progress bar */
+.ach-bar {
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 12px;
+  margin-top: 6px;
+}
+
+.ach-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, orange, gold);
+  transition: width 0.4s ease;
+}
+
+/* Difficulty text */
+.ach-difficulty {
+  font-weight: bold;
+  font-size: 0.85rem;
+  float: right;
+}
+
+/* Difficulty colors */
+.diff-easy { color: #3cff6a; }
+.diff-medium { color: orange; }
+.diff-hard { color: red; }
+
+.diff-insane {
+  color: red;
+  -webkit-text-stroke: 0.6px yellow;
+}
+
+.diff-impossible {
+  color: #7dd3ff;
+  -webkit-text-stroke: 0.6px darkred;
+}
 
 .ach-panel.active { display: block; }
 
@@ -141,7 +201,7 @@ body.light .btn {
 <button class="toggle-theme" id="themeBtn">🌙</button>
 
 <div class="ach-btn" onclick="toggleAchievements()">Achievements</div>
-<div class="ach-panel" id="achPanel">
+<div class="ach-panel" id="achPanel">                                              ach panel!!!!!
   <h2>Achievements</h2>
   <p>Coming soon...</p>
   <button class="btn" onclick="toggleAchievements()">Close</button>
@@ -201,6 +261,7 @@ themeBtn.onclick = () => {
 };
 
 function toggleAchievements() {
+  renderAchievements();
   achPanel.classList.toggle('active');
 }
 
@@ -233,6 +294,71 @@ function prevTutorial() {
   updateTutorial();
 }
 updateTutorial();
+  }
+  /* =====================
+   ACHIEVEMENT DATA
+===================== */
+
+const achievements = [
+  {
+    title: "Victory!",
+    desc: "Win your first game",
+    progress: 1,
+    goal: 1,
+    difficulty: "easy"
+  },
+  {
+    title: "Sacrificial Sacrifice",
+    desc: "Lose a game by overcommitting",
+    progress: 0,
+    goal: 1,
+    difficulty: "medium"
+  },
+  {
+    title: "Secretly a Legend",
+    desc: "Obtain a Secret rarity card",
+    progress: 0,
+    goal: 1,
+    difficulty: "insane"
+  },
+  {
+    title: "The Chosen Wizard",
+    desc: "Win using only mystical cards",
+    progress: 0,
+    goal: 1,
+    difficulty: "impossible"
+  }
+];
+
+/* =====================
+   RENDER ACHIEVEMENTS
+===================== */
+
+function renderAchievements() {
+  const panel = document.getElementById("achPanel");
+  panel.innerHTML = "<h2>Achievements</h2>";
+
+  achievements.forEach(a => {
+    const percent = Math.min((a.progress / a.goal) * 100, 100);
+
+    const div = document.createElement("div");
+    div.className = "achievement";
+
+    div.innerHTML = `
+      <span class="ach-difficulty diff-${a.difficulty}">
+        ${a.difficulty.toUpperCase()}
+      </span>
+      <h3>${a.title}</h3>
+      <p>${a.desc}</p>
+      <div class="ach-bar">
+        <div class="ach-bar-fill" style="width:${percent}%"></div>
+      </div>
+    `;
+
+    panel.appendChild(div);
+  });
+}
+
 </script>
 
 </body>
