@@ -7,192 +7,201 @@
 
 <style>
 :root {
-  --dark-bg: #0f0f0f;
-  --light-bg: #f4f1e8;
-  --dark-text: #f5f5f5;
-  --light-text: #111;
-  --accent: orange;
+  --dark-bg:#0f0f0f;
+  --light-bg:#f4f1e8;
+  --dark-text:#f5f5f5;
+  --light-text:#111;
+  --accent:orange;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--dark-bg);
-  color: var(--dark-text);
-  transition: background 0.3s, color 0.3s;
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--dark-bg);
+  color:var(--dark-text);
+  transition:.3s;
 }
-
 body.light {
-  background: var(--light-bg);
-  color: var(--light-text);
+  background:var(--light-bg);
+  color:var(--light-text);
 }
 
 .section {
-  display: none;
-  min-height: 100vh;
-  padding: 40px;
-  text-align: center;
+  display:none;
+  min-height:100vh;
+  padding:40px;
+  text-align:center;
 }
-
-.section.active {
-  display: block;
-}
+.section.active { display:block; }
 
 .btn {
-  width: 240px;
-  padding: 15px;
-  margin: 15px auto;
-  display: block;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  border: 2px solid #555;
-  background: #2e2e2e;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
+  width:240px;
+  padding:15px;
+  margin:15px auto;
+  font-size:1.1rem;
+  border-radius:10px;
+  border:2px solid #555;
+  background:#2e2e2e;
+  color:white;
+  cursor:pointer;
+  transition:.2s;
 }
-
 body.light .btn {
-  background: white;
-  color: black;
+  background:white;
+  color:black;
 }
+.btn:hover { transform:scale(1.05); }
 
-.btn:hover {
-  transform: scale(1.05);
+.logo .top {
+  font-size:2.4rem;
+  color:orange;
+  border:3px solid red;
+  display:inline-block;
+  padding:10px 30px;
 }
-
-.logo {
-  margin-bottom: 40px;
-}
-
-.logo .top,
 .logo .bottom {
-  background: transparent;
-  color: orange;
-  border: 3px solid red;
-  padding: 10px 30px;
-  font-weight: bold;
+  font-size:1.6rem;
+  margin-top:10px;
+  color:orange;
+  border:3px solid red;
+  display:inline-block;
+  padding:6px 25px;
 }
-
-.logo .top { font-size: 2.4rem; }
-.logo .bottom { font-size: 1.6rem; margin-top: 10px; }
 
 .toggle-theme {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
+  position:fixed;
+  top:15px;
+  right:15px;
+  font-size:1.8rem;
+  background:none;
+  border:none;
+  cursor:pointer;
 }
 
-.ach-btn {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background: #c2a36b;
-  padding: 10px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
+/* =========================
+   ACHIEVEMENT GEM BUTTON
+========================= */
+
+.ach-gem {
+  position:fixed;
+  top:15px;
+  left:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#c2a36b;
+  border-radius:25px;
+  padding:8px 12px;
+  cursor:pointer;
+  width:44px;
+  overflow:hidden;
+  transition:.3s;
+  box-shadow:0 0 10px rgba(0,0,0,.6);
 }
+
+.ach-gem span {
+  white-space:nowrap;
+  font-weight:bold;
+  opacity:0;
+  transition:.3s;
+}
+
+.ach-gem:hover {
+  width:160px;
+}
+
+.ach-gem:hover span {
+  opacity:1;
+}
+
+.gem-icon {
+  font-size:1.4rem;
+}
+
+/* =========================
+   ACHIEVEMENTS PANEL
+========================= */
 
 .ach-panel {
-  position: fixed;
-  inset: 5% 10%;
-  background: #e7d8b1;
-  border: 5px solid #a07c3a;
-  padding: 30px;
-  overflow-y: auto;
-  display: none;
+  position:fixed;
+  inset:6% 10%;
+  background:#e7d8b1;
+  border:5px solid #a07c3a;
+  padding:25px;
+  overflow-y:auto;
+  display:none;
+  z-index:10;
 }
-/* =====================
-   ACHIEVEMENT ITEMS
-===================== */
+.ach-panel.active { display:block; }
 
 .achievement {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 165, 0, 0.4);
-  border-radius: 14px;
-  padding: 15px;
-  margin-bottom: 18px;
-  text-align: left;
+  background:rgba(0,0,0,.08);
+  border:1px solid rgba(255,165,0,.5);
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:18px;
+  text-align:left;
 }
 
-.achievement h3 {
-  margin: 0 0 6px;
-}
+.achievement h3 { margin:0 0 6px; }
+.achievement p { margin:0 0 10px; }
 
-.achievement p {
-  margin: 0 0 10px;
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-/* Progress bar */
 .ach-bar {
-  background: #222;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 12px;
-  margin-top: 6px;
+  height:12px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
 }
 
 .ach-bar-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, orange, gold);
-  transition: width 0.4s ease;
+  height:100%;
+  background:linear-gradient(90deg,orange,gold);
+  transition:.4s;
 }
 
-/* Difficulty text */
 .ach-difficulty {
-  font-weight: bold;
-  font-size: 0.85rem;
-  float: right;
+  float:right;
+  font-weight:bold;
+  font-size:.85rem;
 }
 
-/* Difficulty colors */
-.diff-easy { color: #3cff6a; }
-.diff-medium { color: orange; }
-.diff-hard { color: red; }
-
+/* difficulty colors */
+.diff-easy { color:#3cff6a; }
+.diff-medium { color:orange; }
+.diff-hard { color:red; }
 .diff-insane {
-  color: red;
-  -webkit-text-stroke: 0.6px yellow;
+  color:red;
+  -webkit-text-stroke:.6px yellow;
 }
-
 .diff-impossible {
-  color: #7dd3ff;
-  -webkit-text-stroke: 0.6px darkred;
+  color:#7dd3ff;
+  -webkit-text-stroke:.6px darkred;
 }
 
-.ach-panel.active { display: block; }
-
-.tutorial-box {
-  max-width: 750px;
-  margin: auto;
-}
-
-.tutorial-nav {
-  margin-top: 30px;
-}
+/* =========================
+   TUTORIAL CARDS
+========================= */
 
 .card {
-  margin: 8px auto;
-  padding: 8px;
-  border-radius: 8px;
-  width: 80%;
-  font-weight: bold;
+  margin:10px auto;
+  padding:10px;
+  border-radius:8px;
+  width:80%;
+  font-weight:bold;
 }
 
-.rare { border: 2px solid #4da6ff; }
-.epic { border: 2px solid magenta; }
-.legendary { border: 2px solid gold; }
-.mystical { border: 2px solid #b38bff; }
-.upgraded { border: 2px solid gold; box-shadow: 0 0 10px #66ccff; }
-.secret { border: 2px solid darkred; box-shadow: 0 0 12px black; }
+.rare { border:2px solid #4da6ff; }
+.epic { border:2px solid magenta; }
+.legendary { border:2px solid gold; }
+.mystical { border:2px solid #b38bff; }
+.upgraded {
+  border:2px solid gold;
+  box-shadow:0 0 10px #66ccff;
+}
+.secret {
+  border:2px solid darkred;
+  box-shadow:0 0 12px black;
+}
 </style>
 </head>
 
@@ -200,164 +209,107 @@ body.light .btn {
 
 <button class="toggle-theme" id="themeBtn">🌙</button>
 
-<div class="ach-btn" onclick="toggleAchievements()">Achievements</div>
-<div class="ach-panel" id="achPanel">                                              ach panel!!!!!
-  <h2>Achievements</h2>
-  <button class="btn" onclick="toggleAchievements()">Close</button>
+<!-- ACHIEVEMENT GEM -->
+<div class="ach-gem" id="achBtn">
+  <div class="gem-icon">💎</div>
+  <span>Achievements</span>
 </div>
 
+<div class="ach-panel" id="achPanel"></div>
+
+<!-- MENU -->
 <div class="section active" id="menu">
   <div class="logo">
-    <div class="top">TACTICAL</div>
+    <div class="top">TACTICAL</div><br>
     <div class="bottom">BATTLE</div>
   </div>
-  <button class="btn" onclick="showSection('play')">Play</button>
   <button class="btn" onclick="showSection('tutorial')">Tutorial</button>
   <button class="btn" onclick="showSection('settings')">Settings</button>
 </div>
 
-<div class="section" id="play">
-  <h1>Choose Mode</h1>
-  <button class="btn" onclick="showSection('ai')">AI</button>
-  <button class="btn back" onclick="showSection('menu')">Back</button>
-</div>
-
-<div class="section" id="ai">
-  <h1>You vs AI</h1>
-  <p>Battle system coming soon.</p>
-  <button class="btn back" onclick="showSection('play')">Back</button>
-</div>
-
+<!-- TUTORIAL -->
 <div class="section" id="tutorial">
-  <div class="tutorial-box">
-    <h1 id="tutorialTitle"></h1>
-    <div id="tutorialText"></div>
-
-    <div class="tutorial-nav">
-      <button class="btn" onclick="prevTutorial()">Back</button>
-      <button class="btn" onclick="nextTutorial()">Next</button>
-    </div>
-
-    <button class="btn back" onclick="showSection('menu')">Exit Tutorial</button>
-  </div>
+  <h1 id="tutorialTitle"></h1>
+  <div id="tutorialText"></div>
+  <br>
+  <button class="btn" onclick="prevTutorial()">Back</button>
+  <button class="btn" onclick="nextTutorial()">Next</button>
+  <button class="btn" onclick="showSection('menu')">Exit</button>
 </div>
 
 <div class="section" id="settings">
   <h1>Settings</h1>
-  <p>More options soon.</p>
-  <button class="btn back" onclick="showSection('menu')">Back</button>
+  <button class="btn" onclick="showSection('menu')">Back</button>
 </div>
 
 <script>
+/* ---------- helpers ---------- */
+const achPanel = document.getElementById("achPanel");
+const achBtn = document.getElementById("achBtn");
+
 function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 }
 
-themeBtn.onclick = () => {
-  document.body.classList.toggle('light');
-  themeBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
-}
+/* theme */
+themeBtn.onclick=()=>{
+  document.body.classList.toggle("light");
+  themeBtn.textContent=document.body.classList.contains("light")?"🌞":"🌙";
+};
 
-function toggleAchievements() {
-  renderAchievements();
-  achPanel.classList.toggle('active');
-}
+/* =========================
+   TUTORIAL
+========================= */
 
-const tutorialPages = [
-  { title:"Welcome", text:"Tactical Battle is a chaotic strategy card game focused on weapons, upgrades, and smart risk-taking." },
-  { title:"Game Flow", text:"Each turn you draw a card or play one. Upgrade weapons, sabotage enemies, and build insane combos." },
-  { title:"Weapon Rarities", text:"<div class='card rare'>Rare – Blue</div><div class='card epic'>Epic – Magenta</div><div class='card legendary'>Legendary – Gold</div><div class='card mystical'>Mystical – Light Purple / Blue</div><div class='card upgraded'>Upgraded‑Legendary – Crystallized Gold</div>" },
-  { title:"Rare Weapons", text:"<div class='card rare'>Bow</div><div class='card rare'>Bomb</div><div class='card rare'>Spear</div>" },
-  { title:"Epic Weapons", text:"<div class='card epic'>Crossbow</div><div class='card epic'>Minigun</div><div class='card epic'>Nature’s Staff</div><div class='card epic'>Trident</div>" },
-  { title:"Legendary Weapons", text:"<div class='card legendary'>Laser</div><div class='card legendary'>Kunai</div>" },
-  { title:"Mystical Weapon", text:"<div class='card mystical'>Magic Wand</div>" },
-  { title:"Upgraded‑Legendary Weapons", text:"<div class='card upgraded'>Silent Assassin</div><div class='card upgraded'>Plasma Cannon</div>" },
-  { title:"Limited‑Time Weapons", text:"Military, Hacker, and Christmas weapons appear only during special events." },
-  { title:"Secret ??? Rarity", text:"<div class='card secret'>??? (1‑of‑1)</div><p>A unique, single‑copy weapon with red and black cracked energy. Extremely rare.</p>" },
-  { title:"Crystals", text:"Crystal of Annihilation • Life • Torn Reality • Chaotic Curses • Mighty Storm" },
-  { title:"Final Tips", text:"Experiment. Sacrifice. Break the rules. Tactical Battle rewards creativity." }
+const pages=[
+{title:"Welcome",text:"<div class='card rare'>Weapons • Upgrades • Chaos</div>"},
+{title:"Rarities",text:`
+<div class='card rare'>Rare</div>
+<div class='card epic'>Epic</div>
+<div class='card legendary'>Legendary</div>
+<div class='card mystical'>Mystical</div>
+<div class='card upgraded'>Upgraded-Legendary</div>`},
+{title:"Secrets",text:"<div class='card secret'>??? (1-of-1)</div>"}
+];
+let i=0;
+function renderTutorial(){
+  tutorialTitle.textContent=pages[i].title;
+  tutorialText.innerHTML=pages[i].text;
+}
+function nextTutorial(){ if(i<pages.length-1){i++;renderTutorial();}}
+function prevTutorial(){ if(i>0){i--;renderTutorial();}}
+renderTutorial();
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+const achievements=[
+{title:"Victory!",desc:"Win your first game",progress:1,goal:1,difficulty:"easy"},
+{title:"Sacrificial Sacrifice",desc:"Lose by overcommitting",progress:0,goal:1,difficulty:"medium"},
+{title:"Secretly a Legend",desc:"Obtain a Secret card",progress:0,goal:1,difficulty:"insane"},
+{title:"Chosen Wizard",desc:"Win with only mystical cards",progress:0,goal:1,difficulty:"impossible"}
 ];
 
-let tutorialIndex = 0;
-function updateTutorial() {
-  tutorialTitle.textContent = tutorialPages[tutorialIndex].title;
-  tutorialText.innerHTML = tutorialPages[tutorialIndex].text;
-}
-function nextTutorial() {
-  if (tutorialIndex < tutorialPages.length - 1) tutorialIndex++;
-  updateTutorial();
-}
-function prevTutorial() {
-  if (tutorialIndex > 0) tutorialIndex--;
-  updateTutorial();
-}
-updateTutorial();
-  }
-  /* =====================
-   ACHIEVEMENT DATA
-===================== */
-
-const achievements = [
-  {
-    title: "Victory!",
-    desc: "Win your first game",
-    progress: 1,
-    goal: 1,
-    difficulty: "easy"
-  },
-  {
-    title: "Sacrificial Sacrifice",
-    desc: "Lose a game by overcommitting",
-    progress: 0,
-    goal: 1,
-    difficulty: "medium"
-  },
-  {
-    title: "Secretly a Legend",
-    desc: "Obtain a Secret rarity card",
-    progress: 0,
-    goal: 1,
-    difficulty: "insane"
-  },
-  {
-    title: "The Chosen Wizard",
-    desc: "Win using only mystical cards",
-    progress: 0,
-    goal: 1,
-    difficulty: "impossible"
-  }
-];
-
-/* =====================
-   RENDER ACHIEVEMENTS
-===================== */
-
-function renderAchievements() {
-  const panel = document.getElementById("achPanel");
-  panel.innerHTML = "<h2>Achievements</h2>";
-
-  achievements.forEach(a => {
-    const percent = Math.min((a.progress / a.goal) * 100, 100);
-
-    const div = document.createElement("div");
-    div.className = "achievement";
-
-    div.innerHTML = `
-      <span class="ach-difficulty diff-${a.difficulty}">
-        ${a.difficulty.toUpperCase()}
-      </span>
+function renderAchievements(){
+  achPanel.innerHTML=`<h2>Achievements</h2>`;
+  achievements.forEach(a=>{
+    const pct=Math.min(a.progress/a.goal*100,100);
+    achPanel.innerHTML+=`
+    <div class="achievement">
+      <span class="ach-difficulty diff-${a.difficulty}">${a.difficulty.toUpperCase()}</span>
       <h3>${a.title}</h3>
       <p>${a.desc}</p>
-      <div class="ach-bar">
-        <div class="ach-bar-fill" style="width:${percent}%"></div>
-      </div>
-    `;
-
-    panel.appendChild(div);
+      <div class="ach-bar"><div class="ach-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
   });
 }
 
+achBtn.onclick=()=>{
+  renderAchievements();
+  achPanel.classList.toggle("active");
+};
 </script>
 
 </body>
