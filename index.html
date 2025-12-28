@@ -203,7 +203,6 @@ body.light .btn {
 <div class="ach-btn" onclick="toggleAchievements()">Achievements</div>
 <div class="ach-panel" id="achPanel">                                              ach panel!!!!!
   <h2>Achievements</h2>
-  <p>Coming soon...</p>
   <button class="btn" onclick="toggleAchievements()">Close</button>
 </div>
 
@@ -258,7 +257,7 @@ function showSection(id) {
 themeBtn.onclick = () => {
   document.body.classList.toggle('light');
   themeBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
-};
+}
 
 function toggleAchievements() {
   renderAchievements();
