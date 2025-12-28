@@ -77,6 +77,46 @@ body.light .btn {
   border:none;
   cursor:pointer;
 }
+  
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.mode-card {
+  background: #1f1f1f;
+  border: 2px solid orange;
+  border-radius: 16px;
+  padding: 25px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.mode-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255,165,0,0.4);
+}
+
+.mode-card h2 {
+  margin-top: 0;
+  color: orange;
+}
+
+.mode-card p {
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.submodes {
+  margin-top: 25px;
+}
+
+.submodes .btn {
+  width: 200px;
+}
 
 /* =========================
    ACHIEVEMENT GEM BUTTON
@@ -223,8 +263,90 @@ body.light .btn {
     <div class="top">TACTICAL</div><br>
     <div class="bottom">BATTLE</div>
   </div>
+  <button class="btn" onclick="showSection('play')">Play</button>
   <button class="btn" onclick="showSection('tutorial')">Tutorial</button>
   <button class="btn" onclick="showSection('settings')">Settings</button>
+</div>
+  
+<div class="section" id="play">
+  <h1>Select Game Mode</h1>
+
+  <div class="mode-grid">
+
+    <div class="mode-card" onclick="showSection('normalMode')">
+      <h2>Normal Match</h2>
+      <p>Standard Tactical Battle experience. Full rules, full chaos.</p>
+    </div>
+
+    <div class="mode-card" onclick="showSection('quickMode')">
+      <h2>Quick Match</h2>
+      <p>Faster games with restrictions. Straight to the action.</p>
+    </div>
+
+    <div class="mode-card" onclick="showSection('ffaMode')">
+      <h2>Free For All</h2>
+      <p>Everyone vs everyone. No mercy. No alliances.</p>
+    </div>
+
+    <div class="mode-card" onclick="showSection('progressionMode')">
+      <h2>Progression Mode</h2>
+      <p>Grow stronger over time. Long-term tactical evolution.</p>
+    </div>
+
+  </div>
+
+  <button class="btn back" onclick="showSection('menu')">Back</button>
+</div>
+  
+<div class="section" id="normalMode">
+  <h1>Normal Match</h1>
+  <p>The core Tactical Battle experience.</p>
+
+  <div class="submodes">
+    <button class="btn">AI Battle</button>
+    <button class="btn">1v1</button>
+    <button class="btn">Trios</button>
+    <button class="btn">Quads</button>
+  </div>
+
+  <button class="btn back" onclick="showSection('play')">Back</button>
+</div>
+
+<div class="section" id="quickMode">
+  <h1>Quick Match</h1>
+  <p>Shorter matches, faster decisions.</p>
+
+  <div class="submodes">
+    <button class="btn">AI Battle</button>
+    <button class="btn">1v1</button>
+    <button class="btn">Trios</button>
+  </div>
+
+  <button class="btn back" onclick="showSection('play')">Back</button>
+</div>
+
+<div class="section" id="ffaMode">
+  <h1>Free For All</h1>
+  <p>Every player for themselves.</p>
+
+  <div class="submodes">
+    <button class="btn">Solo FFA</button>
+    <button class="btn">Trios FFA</button>
+  </div>
+
+  <button class="btn back" onclick="showSection('play')">Back</button>
+</div>
+
+<div class="section" id="progressionMode">
+  <h1>Progression Mode</h1>
+  <p>Advance, unlock, and evolve your power.</p>
+
+  <div class="submodes">
+    <button class="btn">AI Progression</button>
+    <button class="btn">PvP Progression</button>
+  </div>
+
+  <button class="btn back" onclick="showSection('play')">Back</button>
 </div>
 
 <!-- TUTORIAL -->
