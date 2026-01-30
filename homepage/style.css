@@ -1,62 +1,283 @@
-* {
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+:root {
+  --dark-bg: #0f0f0f;
+  --light-bg: #f4f1e8;
+  --dark-text: #f5f5f5;
+  --light-text: #111;
+  --accent: orange;
+}
 
-    body.dark {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: orange;
-    }
-    body.light {
-     background: #f0f0f0;
-      color: #111;
-    }
-    
-    .container {
-      text-align: center;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  transition: 0.3s;
+}
+body.light {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 40px;
-      letter-spacing: 2px;
-    }
+.section {
+  display: none;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+}
+.section.active {
+  display: block;
+}
 
-    .btn {
-      display: block;
-      width: 220px;
-      margin: 15px auto;
-      padding: 15px;
-      font-size: 1.2rem;
-      background: #2e2e2e;
-      color: white;
-      border: 2px solid #555;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+.btn {
+  width: 240px;
+  padding: 15px;
+  margin: 15px auto;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 2px solid #555;
+  background: #2e2e2e;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+body.light .btn {
+  background: white;
+  color: black;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
 
-    body.light .btn {
-      background: #ddd
-        color: #111
-        border-color: #aaa  ;
-    }
-    
-    .btn:hover {
-      background: #444;
-      transform: scale(1.05);
-    }
-    .toggle-btn{
-      position: fixed;
-      top: 20px;
-      right: 20px
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-    }
+.logo .top {
+  font-size: 2.4rem;
+  color: orange;
+  border: 6px solid red;
+  display: inline-block;
+  padding: 10px 30px;
+}
+.logo .bottom {
+  font-size: 1.6rem;
+  margin-top: 10px;
+  color: orange;
+  border: 6px solid red;
+  display: inline-block;
+  padding: 6px 25px;
+}
+
+.toggle-theme {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.mode-card {
+  background: #1f1f1f;
+  border: 2px solid lightskyblue;
+  border-radius: 16px;
+  padding: 25px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.mode-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 165, 0, 0.4);
+}
+
+.mode-card h2 {
+  margin-top: 0;
+  color: orange;
+}
+
+.mode-card p {
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.submodes {
+  margin-top: 25px;
+}
+
+.submodes .btn {
+  width: 200px;
+}
+
+/* =========================
+   ACHIEVEMENT GEM BUTTON
+========================= */
+
+.ach-gem {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #c2a36b;
+  border-radius: 35px;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 28px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.ach-gem span {
+  white-space: nowrap;
+  font-weight: bold;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.ach-gem:hover {
+  width: 160px;
+}
+
+.ach-gem:hover span {
+  opacity: 1;
+}
+
+.gem-icon {
+  font-size: 1.4rem;
+}
+
+/* =========================
+   ACHIEVEMENTS PANEL
+========================= */
+
+.ach-panel {
+  position: fixed;
+  inset: 6% 10%;
+  background: #e7d8b1;
+  border: 5px solid #a07c3a;
+  padding: 25px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+}
+.ach-panel.active {
+  display: block;
+}
+
+.achievement {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 165, 0, 0.5);
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.achievement h3 {
+  margin: 0 0 6px;
+}
+.achievement p {
+  margin: 0 0 10px;
+}
+
+.ach-bar {
+  height: 12px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ach-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, orange, gold);
+  transition: 0.4s;
+}
+
+.ach-difficulty {
+  float: right;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* difficulty colors */
+.diff-easy {
+  color: #3cff6a;
+}
+.diff-medium {
+  color: orange;
+}
+.diff-hard {
+  color: red;
+}
+.diff-insane {
+  color: red;
+  -webkit-text-stroke: 0.6px yellow;
+}
+.diff-impossible {
+  color: #7dd3ff;
+  -webkit-text-stroke: 0.6px darkred;
+}
+
+/* =========================
+   TUTORIAL CARDS
+========================= */
+
+/* === CARD BASE (SAFE TEST) === */
+.card {
+  width: 160px;
+  height: 220px;
+  background: #111;
+  border: 2px solid #444;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* === HOVER EFFECT === */
+.card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+}
+
+.rare {
+  border: 3px solid #4da6ff;
+}
+.epic {
+  border: 3px solid magenta;
+}
+.legendary {
+  border: 3px solid gold;
+}
+.mystical {
+  border: 3px solid lightskyblue;
+  box-shadow: 0 0 12px purple;
+}
+.upgraded {
+  border: 3px solid gold;
+  box-shadow: 0 0 10px #66ccff;
+}
+.secret {
+  border: 4px solid darkred;
+  box-shadow: 0 0 12px black;
+}
+.tutorial-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
