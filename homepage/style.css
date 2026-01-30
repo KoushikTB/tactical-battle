@@ -93,12 +93,12 @@ body.light .btn {
 
 .mode-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 18px rgba(255, 165, 0, 0.4);
+  box-shadow: 0 0 18px rgba(241, 230, 105, 0.496);
 }
 
 .mode-card h2 {
   margin-top: 0;
-  color: orange;
+  color: rgb(0, 191, 255);
 }
 
 .mode-card p {
