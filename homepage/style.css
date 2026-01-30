@@ -129,7 +129,7 @@ body.light .btn {
   border-radius: 35px;
   padding: 8px 12px;
   cursor: pointer;
-  width: 28px;
+  width: 16px;
   overflow: hidden;
   transition: 0.3s;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
@@ -254,7 +254,7 @@ body.light .btn {
 }
 
 .rare {
-  border: 3px solid #4da6ff;
+  border: 3px solid solid lightcornflowerblue;
 }
 .epic {
   border: 3px solid magenta;
@@ -264,7 +264,7 @@ body.light .btn {
 }
 .mystical {
   border: 3px solid lightskyblue;
-  box-shadow: 0 0 12px purple;
+  box-shadow: 0 0 14px purple;
 }
 .upgraded {
   border: 3px solid gold;
