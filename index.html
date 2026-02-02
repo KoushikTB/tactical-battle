@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tactical Battle</title>
+  <link rel="stylesheet" href="/homepage/style.css">
+</head>
+<body>
+  <div id="app">Loading…</div>
+
+  <script>
+    fetch('/homepage/body.html').then(r=>r.text()).then(html=>{
+      document.getElementById('app').innerHTML = html;
+      const s = document.createElement('script');
+      s.src = '/homepage/main.js';
+      s.defer = true;
+      document.body.appendChild(s);
+    }).catch(e=>{
+      document.getElementById('app').textContent = 'Failed to load site.';
+      console.error(e);
+    });
+  </script>
+</body>
+</html>
